@@ -1,0 +1,8 @@
+<%= form_with model: [ @topic, @topic.posts.build ] do |form| %>
+  <p>
+    <%= form.text_area :content %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

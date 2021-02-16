@@ -1,0 +1,14 @@
+<p class="display-4">Topic Are Here!!!</p>
+<ul>
+  <% @topics.each do |article| %>
+    <li class="list-group-item">
+      <%= link_to article.title, article %>
+    </li>
+  <% end %>
+</ul>
+
+
+
+
+
+
