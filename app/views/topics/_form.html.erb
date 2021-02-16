@@ -1,22 +1,22 @@
 <%= form_with model: topic do |form| %>
-  <div class="container">
+  <br class="container form-group">
   <div>
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:"form-control" %>
     <% topic.errors.full_messages_for(:title).each do |message| %>
-      <div><%= message %></div>
+      <div style="color:#ff0000;"><%= message %></div>
     <% end %>
   </div>
-
-  <div>
+  </br>
+  <div class="field form-group">
     <%= form.label :created_by_and_date %><br>
-    <%= form.text_area :post %><br>
+    <%= form.text_area :post, class:"form-control"%><br>
     <% topic.errors.full_messages_for(:post).each do |message| %>
-      <div><%= message %></div>
+      <div style="color:#ff0000;"><%= message %></div>
     <% end %>
   </div>
 <div>
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-dark'%>
 <% end %>
 </div>
 
