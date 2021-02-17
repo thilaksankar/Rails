@@ -11,9 +11,8 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
-
     if @topic.save
-      redirect_to @topic
+      redirect_to @topic, success: "Topics created Succesfully"
     else
       render :new
     end
@@ -21,7 +20,7 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update(topic_params)
-      redirect_to @topic
+      redirect_to @topic, info: "Topics Updated!"
     else
       render :edit
     end
@@ -32,7 +31,7 @@ class TopicsController < ApplicationController
   def destroy
     @topic = Topic.find(params[:id])
     @topic.destroy
-    redirect_to root_path
+    redirect_to root_path, warning: "Topic Deleted successfully!!"
   end
   private
   def topic_params

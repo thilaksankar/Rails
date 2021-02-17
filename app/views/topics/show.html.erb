@@ -1,3 +1,4 @@
+
 <div class= "container">
 <h1><%= @topic.title %></h1>
 <p><%= @topic.post %></p>
@@ -21,9 +22,6 @@
     </div>
   </div>
 <h2>Add your thougts?</h2>
-  <% if flash[:notice] %>
-    <p style="color:#ff0000;" class="notice"><%= flash[:notice] %></p>
-  <% end %>
 <%= render 'posts/form' %>
 
 </br>

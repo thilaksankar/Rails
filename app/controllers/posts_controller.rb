@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     if @post.save
     redirect_to topic_path(@topic)
     else
-      flash[:notice] = "Must have atleast 10 character"
+      flash[:notice] = "Must have atleast 10 characters"
       redirect_to topic_path(@topic)
     end
   end

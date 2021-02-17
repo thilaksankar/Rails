@@ -1,4 +1,7 @@
 <%= form_with model: [ @topic, @topic.posts.build ] do |form| %>
+  <% if flash[:notice] %>
+    <p style="color:#ff0000;" class="notice"><%= flash[:notice] %></p>
+  <% end %>
   <div class="field form-group">
     <%= form.text_area :content, class:"form-control" %>
   </div></br>
