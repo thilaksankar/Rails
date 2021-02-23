@@ -1,0 +1,16 @@
+<div class="container">
+  <h3 style="font-family:verdana;">Edit Post</h3>
+<%= form_with model: [ @topic, @post ] do |form| %>
+  <br class="container form-group">
+  <div>
+
+    <%= form.text_area :content, class:"form-control" %>
+  </div>
+  </br>
+  <div>
+    <%= form.submit class:'btn btn-dark'%>
+<% end %>
+  <%= link_to "Back", topic_post_path, class:"btn btn-light" %>
+</div>
+
+

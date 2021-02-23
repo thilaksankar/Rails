@@ -1,9 +1,7 @@
 <p>
-  <strong>Content:</strong>
+  <strong>Post</strong>
   <%= post.content %>
 </p>
 <p>
-  <%= link_to 'Destroy Post', [post.topic, post],
-              method: :delete,
-              data: { confirm: "Are you sure?" } %>
+  <%= link_to 'Add a Comment/Edit', [post.topic, post], class: "btn btn-primary" %>
 </p>

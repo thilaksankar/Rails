@@ -3,6 +3,7 @@
   <% @topics.each do |article| %>
     <li class="list-group-item">
       <%= link_to article.title, article %>
+      <%= article.post %>
     </li>
   <% end %>
 </ul>

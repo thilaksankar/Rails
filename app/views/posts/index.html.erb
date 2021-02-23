@@ -1,0 +1,6 @@
+<p class="display-4">All the Posts Are Here!!!</p>
+<% @posts.each  do |article| %>
+    <li class="list-group-item">
+    <%= link_to article.content %>
+  </li>
+<% end %>
