@@ -29,7 +29,7 @@ module Selenium
         @executable = 'IEDriverServer'
         @missing_text = <<~ERROR
           Unable to find IEDriverServer. Please download the server from
-          http://selenium-release.storage.googleapis.com/index.html.erb and place it somewhere on your PATH.
+          http://selenium-release.storage.googleapis.com/index.html.erb.erb and place it somewhere on your PATH.
           More info at https://github.com/SeleniumHQ/selenium/wiki/InternetExplorerDriver.
         ERROR
         @shutdown_supported = true

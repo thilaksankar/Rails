@@ -28,7 +28,7 @@ gem 'devise', '~> 4.7', '>= 4.7.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
-
+gem 'will_paginate', '~> 3.1.1'
 group :development, :test do
   gem 'shoulda-matchers'
   gem 'rspec-rails'

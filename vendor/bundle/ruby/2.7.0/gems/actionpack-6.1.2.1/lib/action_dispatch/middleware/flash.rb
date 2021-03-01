@@ -20,7 +20,7 @@ module ActionDispatch
   #     end
   #   end
   #
-  #   show.html.erb.erb.erb
+  #   show.html.erb.erb.erb.erb
   #     <% if flash[:notice] %>
   #       <div class="notice"><%= flash[:notice] %></div>
   #     <% end %>

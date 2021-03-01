@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_15_132341) do
+ActiveRecord::Schema.define(version: 2021_02_26_123946) do
+
+  create_table "comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "post_id"
+    t.integer "topic_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["topic_id"], name: "index_comments_on_topic_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -18,6 +28,21 @@ ActiveRecord::Schema.define(version: 2021_02_15_132341) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["topic_id"], name: "index_posts_on_topic_id"
+  end
+
+  create_table "taggings", force: :cascade do |t|
+    t.integer "tag_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_taggings_on_post_id"
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "tag"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "topics", force: :cascade do |t|
@@ -28,4 +53,6 @@ ActiveRecord::Schema.define(version: 2021_02_15_132341) do
   end
 
   add_foreign_key "posts", "topics"
+  add_foreign_key "taggings", "posts"
+  add_foreign_key "taggings", "tags"
 end

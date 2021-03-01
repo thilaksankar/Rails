@@ -675,7 +675,7 @@ Append the following to your query string:
                 var iframe = document.createElement('IFRAME');
                 iframe.setAttribute('id', 'speedscope-iframe');
                 document.body.appendChild(iframe);
-                var iframeUrl = '#{@config.base_url_path}speedscope/index.html.erb#profileURL=' + objUrl + '&title=' + 'Flamegraph for #{CGI.escape(path)}';
+                var iframeUrl = '#{@config.base_url_path}speedscope/index.html.erb.erb#profileURL=' + objUrl + '&title=' + 'Flamegraph for #{CGI.escape(path)}';
                 iframe.setAttribute('src', iframeUrl);
               </script>
             </body>

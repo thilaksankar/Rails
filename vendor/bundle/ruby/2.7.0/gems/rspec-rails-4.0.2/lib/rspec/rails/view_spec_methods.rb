@@ -17,7 +17,7 @@ module RSpec
           #
           # @example
           #
-          #     # In "spec/views/widgets/show.html.erb.erb.erb_spec.rb":
+          #     # In "spec/views/widgets/show.html.erb.erb.erb.erb_spec.rb":
           #     before do
           #       widget = Widget.create!(:name => "slicer")
           #       controller.extra_params = { :id => widget.id }

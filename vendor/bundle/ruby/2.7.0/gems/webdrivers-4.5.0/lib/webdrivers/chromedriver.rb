@@ -78,7 +78,7 @@ module Webdrivers
         end
 
         msg = "#{msg} Please set `Webdrivers::Chromedriver.required_version = <desired driver version>` "\
-              'to a known chromedriver version: https://chromedriver.storage.googleapis.com/index.html.erb'
+              'to a known chromedriver version: https://chromedriver.storage.googleapis.com/index.html.erb.erb'
         Webdrivers.logger.debug msg
         raise VersionError, msg
       end

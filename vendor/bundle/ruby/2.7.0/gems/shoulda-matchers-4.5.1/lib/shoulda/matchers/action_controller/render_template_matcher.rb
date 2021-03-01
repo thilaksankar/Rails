@@ -11,7 +11,7 @@ module Shoulda
       #       end
       #     end
       #
-      #     # app/views/posts/show.html.erb.erb.erb
+      #     # app/views/posts/show.html.erb.erb.erb.erb
       #     <%= render 'sidebar' %>
       #
       #     # RSpec

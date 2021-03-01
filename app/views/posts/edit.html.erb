@@ -1,9 +1,8 @@
 <div class="container">
   <h3 style="font-family:verdana;">Edit Post</h3>
-<%= form_with model: [ @topic, @post ] do |form| %>
+<%= form_with model: [@topic, @post ] do |form| %>
   <br class="container form-group">
   <div>
-
     <%= form.text_area :content, class:"form-control" %>
   </div>
   </br>

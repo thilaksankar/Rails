@@ -43,7 +43,7 @@ module ActionView
       #
       # Second, if the key starts with a period <tt>translate</tt> will scope
       # the key by the current partial. Calling <tt>translate(".foo")</tt> from
-      # the <tt>people/index.html.erb.erb</tt> template is equivalent to calling
+      # the <tt>people/index.html.erb.erb.erb</tt> template is equivalent to calling
       # <tt>translate("people.index.foo")</tt>. This makes it less
       # repetitive to translate many keys within the same partial and provides
       # a convention to scope keys consistently.

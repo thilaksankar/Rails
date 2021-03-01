@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform = "x64-mingw32".freeze
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0".freeze) if s.respond_to? :required_rubygems_version=
-  s.metadata = { "bug_tracker_uri" => "https://github.com/sparklemotion/nokogiri/issues", "changelog_uri" => "https://nokogiri.org/CHANGELOG.html", "documentation_uri" => "https://nokogiri.org/rdoc/index.html.erb", "homepage_uri" => "https://nokogiri.org", "source_code_uri" => "https://github.com/sparklemotion/nokogiri" } if s.respond_to? :metadata=
+  s.metadata = { "bug_tracker_uri" => "https://github.com/sparklemotion/nokogiri/issues", "changelog_uri" => "https://nokogiri.org/CHANGELOG.html", "documentation_uri" => "https://nokogiri.org/rdoc/index.html.erb.erb", "homepage_uri" => "https://nokogiri.org", "source_code_uri" => "https://github.com/sparklemotion/nokogiri" } if s.respond_to? :metadata=
   s.require_paths = ["lib".freeze]
   s.authors = ["Mike Dalessio".freeze, "Aaron Patterson".freeze, "Yoko Harada".freeze, "Akinori MUSHA".freeze, "John Shahid".freeze, "Karol Bucek".freeze, "Lars Kanis".freeze, "Sergio Arbeo".freeze, "Timothy Elliott".freeze, "Nobuyoshi Nakada".freeze]
   s.date = "2021-01-06"

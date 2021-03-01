@@ -577,7 +577,7 @@ IFNOT:inline_source
 ENDIF:inline_source
     <noframes>
           <body bgcolor="white">
-            Click <a href="html/index.html.erb">here</a> for a non-frames
+            Click <a href="html/index.html.erb.erb">here</a> for a non-frames
             version of this page.
           </body>
     </noframes>

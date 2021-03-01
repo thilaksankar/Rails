@@ -12,7 +12,7 @@ namespace :spec do
     desc "Browse the code coverage report."
     task :browse => "spec:simplecov" do
       require "launchy"
-      Launchy.open("coverage/index.html.erb")
+      Launchy.open("coverage/index.html.erb.erb")
     end
   end
 end

@@ -148,7 +148,7 @@ module ActionController #:nodoc:
     #
     #   respond_to do |format|
     #     format.html do |variant|
-    #       variant.tablet # renders app/views/projects/show.html.erb.erb+tablet.erb
+    #       variant.tablet # renders app/views/projects/show.html.erb.erb.erb+tablet.erb
     #       variant.phone { extra_setup; render ... }
     #       variant.none  { special_setup } # executed only if there is no variant set
     #     end
@@ -156,9 +156,9 @@ module ActionController #:nodoc:
     #
     # Provide separate templates for each format and variant:
     #
-    #   app/views/projects/show.html.erb.erb.erb
-    #   app/views/projects/show.html.erb.erb+tablet.erb
-    #   app/views/projects/show.html.erb.erb+phone.erb
+    #   app/views/projects/show.html.erb.erb.erb.erb
+    #   app/views/projects/show.html.erb.erb.erb+tablet.erb
+    #   app/views/projects/show.html.erb.erb.erb+phone.erb
     #
     # When you're not sharing any code within the format, you can simplify defining variants
     # using the inline syntax:

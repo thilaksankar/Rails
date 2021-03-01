@@ -29,7 +29,7 @@ module Selenium
         @executable = 'chromedriver'
         @missing_text = <<~ERROR
           Unable to find chromedriver. Please download the server from
-          https://chromedriver.storage.googleapis.com/index.html.erb and place it somewhere on your PATH.
+          https://chromedriver.storage.googleapis.com/index.html.erb.erb and place it somewhere on your PATH.
           More info at https://github.com/SeleniumHQ/selenium/wiki/ChromeDriver.
         ERROR
         @shutdown_supported = true

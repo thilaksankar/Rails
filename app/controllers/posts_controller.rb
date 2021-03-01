@@ -1,18 +1,19 @@
 class PostsController < ApplicationController
   def new
-    @post = Post.new
+    @posts = Post.all
   end
   def index
     @topic = Topic.find(params[:topic_id])
     @posts = @topic.posts
   end
   def show
-    @post = Post.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:id])
   end
   def update
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:id])
-    if @post.update(posts_params)
+    if @post.update(post_params)
       redirect_to @topic
     else
       render :edit
@@ -26,7 +27,7 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.create(post_params)
     if @post.save
-    redirect_to topic_path(@topic)
+      redirect_to topic_path(@topic)
     else
       flash[:notice] = "Must have atleast 10 characters"
       redirect_to topic_path(@topic)

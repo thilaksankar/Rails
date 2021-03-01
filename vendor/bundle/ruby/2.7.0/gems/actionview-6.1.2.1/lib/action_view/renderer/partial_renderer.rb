@@ -125,7 +125,7 @@ module ActionView
   # specified globally for the entire action, but they work in a similar fashion. Imagine a list with two types
   # of users:
   #
-  #   <%# app/views/users/index.html.erb.erb %>
+  #   <%# app/views/users/index.html.erb.erb.erb %>
   #   Here's the administrator:
   #   <%= render partial: "user", layout: "administrator", locals: { user: administrator } %>
   #
@@ -167,7 +167,7 @@ module ActionView
   #   <%# app/views/users/_user.html.erb %>
   #   Name: <%= user.name %>
   #
-  #   <%# app/views/users/index.html.erb.erb %>
+  #   <%# app/views/users/index.html.erb.erb.erb %>
   #   <%# This does not use layouts %>
   #   <ul>
   #     <% users.each do |user| -%>
@@ -182,7 +182,7 @@ module ActionView
   #     <%= yield %>
   #   </li>
   #
-  #   <%# app/views/users/index.html.erb.erb %>
+  #   <%# app/views/users/index.html.erb.erb.erb %>
   #   <ul>
   #     <%= render partial: "user", layout: "li_layout", collection: users %>
   #   </ul>
@@ -227,7 +227,7 @@ module ActionView
   #     <%= yield user %>
   #   </div>
   #
-  #   <%# app/views/users/index.html.erb.erb %>
+  #   <%# app/views/users/index.html.erb.erb.erb %>
   #   <%= render layout: @users do |user| %>
   #     Title: <%= user.title %>
   #   <% end %>
@@ -243,7 +243,7 @@ module ActionView
   #     <%= yield user, :footer %>
   #   </div>
   #
-  #   <%# app/views/users/index.html.erb.erb %>
+  #   <%# app/views/users/index.html.erb.erb.erb %>
   #   <%= render layout: @users do |user, section| %>
   #     <%- case section when :header -%>
   #       Title: <%= user.title %>

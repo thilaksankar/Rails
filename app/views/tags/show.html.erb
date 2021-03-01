@@ -1,0 +1,5 @@
+<%= @tag.tag %>
+</br>
+<%= link_to "Destroy", tag_path(@tag),
+            method: :delete,
+            data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>

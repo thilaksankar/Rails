@@ -172,7 +172,7 @@ describe Webdrivers::Chromedriver do
       msg = 'Unable to find latest point release version for 100.0.0. '\
 'You appear to be using a non-production version of Chrome. '\
 'Please set `Webdrivers::Chromedriver.required_version = <desired driver version>` '\
-'to a known chromedriver version: https://chromedriver.storage.googleapis.com/index.html.erb'
+'to a known chromedriver version: https://chromedriver.storage.googleapis.com/index.html.erb.erb'
 
       expect { chromedriver.latest_version }.to raise_exception(Webdrivers::VersionError, msg)
     end
@@ -181,7 +181,7 @@ describe Webdrivers::Chromedriver do
       allow(chromedriver).to receive(:browser_version).and_return Gem::Version.new('72.0.9999.0000')
       msg = 'Unable to find latest point release version for 72.0.9999. '\
 'Please set `Webdrivers::Chromedriver.required_version = <desired driver version>` '\
-'to a known chromedriver version: https://chromedriver.storage.googleapis.com/index.html.erb'
+'to a known chromedriver version: https://chromedriver.storage.googleapis.com/index.html.erb.erb'
 
       expect { chromedriver.latest_version }.to raise_exception(Webdrivers::VersionError, msg)
     end

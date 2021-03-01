@@ -1,0 +1,18 @@
+<% @post.comments.each do |comment| %>
+  <p>
+    <% unless !comment.persisted? %>
+      <strong>Comments:</strong>
+      <%= comment.comment %>
+      </p>
+    <% end %>
+<% end %>
+<h3>Add a comment:</h3>
+<%= form_with model: [ @topic, @post, comment ] do |form| %>
+  <p>
+
+    <%= form.text_area :comment, class:"form-control" %>
+  </p>
+  <p>
+    <%= form.submit class:'btn btn-dark'%>
+  </p>
+<% end %>

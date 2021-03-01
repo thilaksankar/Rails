@@ -28,7 +28,7 @@ module ActionDispatch
   # This endpoint serves static files from disk using Rack::File.
   #
   # URL paths are matched with static files according to expected
-  # conventions: +path+, +path+.html, +path+/index.html.erb.
+  # conventions: +path+, +path+.html, +path+/index.html.erb.erb.
   #
   # Precompressed versions of these files are checked first. Brotli (.br)
   # and gzip (.gz) files are supported. If +path+.br exists, this
@@ -37,7 +37,7 @@ module ActionDispatch
   # If no matching file is found, this endpoint responds 404 Not Found.
   #
   # Pass the +root+ directory to search for matching files, an optional
-  # +index: "index"+ to change the default +path+/index.html.erb, and optional
+  # +index: "index"+ to change the default +path+/index.html.erb.erb, and optional
   # additional response headers.
   class FileHandler
     # Accept-Encoding value -> file extension
@@ -91,7 +91,7 @@ module ActionDispatch
       # Used by the +Static+ class to negotiate a servable file in the
       # +public/+ directory (see Static#call).
       #
-      # Checks for +path+, +path+.html, and +path+/index.html.erb files,
+      # Checks for +path+, +path+.html, and +path+/index.html.erb.erb files,
       # in that order, including .br and .gzip compressed extensions.
       #
       # If a matching file is found, the path and necessary response headers
@@ -164,9 +164,9 @@ module ActionDispatch
         content_type = ::Rack::Mime.mime_type(ext, nil)
         yield path, content_type || "text/plain"
 
-        # Tack on .html and /index.html.erb only for paths that don't have
+        # Tack on .html and /index.html.erb.erb only for paths that don't have
         # an explicit, resolvable file extension. No need to check
-        # for foo.js.html and foo.js/index.html.erb.
+        # for foo.js.html and foo.js/index.html.erb.erb.
         unless content_type
           default_ext = ::ActionController::Base.default_static_extension
           if ext != default_ext
