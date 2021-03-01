@@ -57,9 +57,9 @@ module RSpec
         # The only addition is that you can call render with no arguments, and
         # RSpec will pass the top level description to render:
         #
-        #     describe "widgets/new.html.erb.erb.erb" do
+        #     describe "widgets/index.html.erb.erb.erb.erb" do
         #       it "shows all the widgets" do
-        #         render # => view.render(file: "widgets/new.html.erb.erb.erb")
+        #         render # => view.render(file: "widgets/index.html.erb.erb.erb.erb")
         #         # ...
         #       end
         #     end
@@ -71,7 +71,7 @@ module RSpec
         # The instance of `ActionView::Base` that is used to render the template.
         # Use this to stub methods _before_ calling `render`.
         #
-        #     describe "widgets/new.html.erb.erb.erb" do
+        #     describe "widgets/index.html.erb.erb.erb.erb" do
         #       it "shows all the widgets" do
         #         view.stub(:foo) { "foo" }
         #         render

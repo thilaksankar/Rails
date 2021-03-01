@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :topics do
     resources :posts do
       resources :comments
+      resources :ratings
     end
   end
   resources :tags
