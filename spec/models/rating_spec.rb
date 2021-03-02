@@ -4,7 +4,7 @@ RSpec.describe Rating, type: :model do
   before(:each) do
     @topic = Topic.create!(title: "First Project", post: "Any stuffs related to title")
     @post = Post.create!(content: "First project", topic_id:@topic.id)
-    @rating = Rating.create!(rate: "5", topic_id:@topic.id, post_id:@post.id)
+    @rating = Rating.create!(rate: "5", post_id:@post.id)
   end
   describe "creation" do
     it "should have a post" do
