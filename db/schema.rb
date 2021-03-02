@@ -31,28 +31,34 @@ ActiveRecord::Schema.define(version: 2021_03_01_082134) do
   end
 
   create_table "ratings", force: :cascade do |t|
+    t.string "rate"
     t.integer "post_id", null: false
+    t.integer "topic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "rate"
-    t.integer "topic_id", null: false
+    t.integer "{:null=>false, :foreign_key=>true}_id"
     t.index ["post_id"], name: "index_ratings_on_post_id"
     t.index ["topic_id"], name: "index_ratings_on_topic_id"
+    t.index ["{:null=>false, :foreign_key=>true}_id"], name: "index_ratings_on_{:null=>false, :foreign_key=>true}_id"
   end
 
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id", null: false
-    t.integer "post_id", null: false
+    t.integer "topic_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_taggings_on_post_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["topic_id"], name: "index_taggings_on_topic_id"
   end
 
   create_table "tags", force: :cascade do |t|
     t.string "tag"
+    t.integer "post_id"
+    t.integer "topic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_tags_on_post_id"
+    t.index ["topic_id"], name: "index_tags_on_topic_id"
   end
 
   create_table "topics", force: :cascade do |t|
@@ -64,7 +70,6 @@ ActiveRecord::Schema.define(version: 2021_03_01_082134) do
 
   add_foreign_key "posts", "topics"
   add_foreign_key "ratings", "posts"
-  add_foreign_key "ratings", "topics"
-  add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"
+  add_foreign_key "taggings", "topics"
 end

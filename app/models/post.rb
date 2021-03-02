@@ -5,7 +5,5 @@ class Post < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
   validates :content, presence: true, length: { minimum:10 }
-  def blank_stars
-    5 - rating.to_i
-  end
+
 end

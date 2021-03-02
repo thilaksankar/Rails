@@ -1,8 +1,15 @@
 </br>
 <div class="container">
 <h3><%= @post.content %></h3>
+  <% @post.ratings.each do |comment| %>
+    <p>
+      <% unless !comment.persisted? %>
+        <strong>Ratings</strong>
+        <%= comment.rate %>
+        </p>
+      <% end %>
+  <% end %>
 
-  </br>
 <%= link_to "Edit", edit_topic_post_path, class: "btn btn-secondary" %>
 <%= link_to 'Delete Post', topic_post_path(@topic, @post),
             method: :delete,
@@ -11,5 +18,6 @@
 </br>
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
+  <%= @post.tags %>
 </div>
 
