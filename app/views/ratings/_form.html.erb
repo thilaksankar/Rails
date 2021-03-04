@@ -2,7 +2,7 @@
 <%= form_with model: [ @topic, @post, rating ] do |form| %>
   <p>
      <strong>Rating</strong>
-    <%= form.number_field :rate, class:"form-control" %>
+    <%= form.number_field :rate %>
   </p>
   <p>
     <%= form.submit class:'btn btn-dark'%>

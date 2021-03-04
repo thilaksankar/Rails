@@ -1,9 +1,10 @@
-
 </br>
 <div class="container">
-<h3><%= @post.content %></h3>
-  <%= image_tag(@post.image) %>
+<h4><%= @post.content %></h4>
   <%= @post.tags %>
+  </br>
+  <%= image_tag(@post.image) %>
+</br>
   <% @post.ratings.each do |comment| %>
     <p>
       <% unless !comment.persisted? %>
@@ -21,5 +22,4 @@
 </br>
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
-  <%= @post.tags %>
 </div>
