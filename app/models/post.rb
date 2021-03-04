@@ -5,5 +5,6 @@ class Post < ApplicationRecord
   has_many :taggings
   has_many :tags, through: :taggings
   validates :content, presence: true, length: { minimum:10 }
-
+  has_one_attached :image
+  validates :image, presence: true
 end

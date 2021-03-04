@@ -20,6 +20,7 @@ class RatingsController < ApplicationController
     if @rating.save
       redirect_to topic_post_path(@topic, @post)
     else
+      flash[:notice] = "Rating should be less than 5"
       redirect_to topic_post_path(@topic, @post)
     end
   end

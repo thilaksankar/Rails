@@ -1,13 +1,16 @@
+
 </br>
 <div class="container">
 <h3><%= @post.content %></h3>
+  <%= image_tag(@post.image) %>
+  <%= @post.tags %>
   <% @post.ratings.each do |comment| %>
     <p>
       <% unless !comment.persisted? %>
         <strong>Ratings</strong>
         <%= comment.rate %>
         </p>
-      <% end %>
+    <% end %>
   <% end %>
 
 <%= link_to "Edit", edit_topic_post_path, class: "btn btn-secondary" %>
@@ -20,4 +23,3 @@
   <%= render 'ratings/form', rating: @post.ratings.build %>
   <%= @post.tags %>
 </div>
-

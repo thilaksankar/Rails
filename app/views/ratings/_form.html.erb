@@ -1,11 +1,10 @@
 
 <%= form_with model: [ @topic, @post, rating ] do |form| %>
   <p>
-    <%= form.text_field :rate, class:"form-control" %>
-
+     <strong>Rating</strong>
+    <%= form.number_field :rate, class:"form-control" %>
   </p>
   <p>
     <%= form.submit class:'btn btn-dark'%>
   </p>
 <% end %>
-
