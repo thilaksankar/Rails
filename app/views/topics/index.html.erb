@@ -1,10 +1,18 @@
-<p class="display-4">Topic Are Here!!!</p>
 <ul>
+  <% if user_signed_in? %>
+    <p class="display-4">Topic Are Here!!!</p>
   <% @topics.each do |article| %>
     <li class="list-group-item">
       <%= link_to article.title, article %>
       <%= article.post %>
+      <% end %>
     </li>
+  <% else %>
+    </br>
+    <p class="display-4">Log in to Continue!</p>
+    <%= link_to 'Sign Up', new_user_registration_path, class:'btn btn-outline-dark' %>
+    <%= link_to 'Sign In', new_user_session_path, class:'btn btn-outline-primary'%>
+  </li>
   <% end %>
 <br>
   <%= will_paginate @topics %>

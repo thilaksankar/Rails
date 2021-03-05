@@ -3,7 +3,7 @@
 <h4><%= @post.content %></h4>
   <%= @post.tags %>
   </br>
-  <%= image_tag(@post.image) %>
+  <%= image_tag(@post.image, :alt => "rss feed", :height =>"320", :width => "320") %>
 </br>
   <% @post.ratings.each do |comment| %>
     <p>
@@ -13,7 +13,7 @@
         </p>
     <% end %>
   <% end %>
-
+  </br>
 <%= link_to "Edit", edit_topic_post_path, class: "btn btn-secondary" %>
 <%= link_to 'Delete Post', topic_post_path(@topic, @post),
             method: :delete,
