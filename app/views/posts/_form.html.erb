@@ -2,7 +2,13 @@
   <br class="container form-group">
   <div>
     <%= form.text_area :content, class:"form-control" %>
-      </div>
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+    <%= Tag.all.each do |list| %>
+    <%= check_box_tag "tag[tag.id][]" %>
+      <%= list.tag %>
+    <% end %>
+  </div>
   </br>
   <div>
     <%= form.submit class:'btn btn-dark'%>

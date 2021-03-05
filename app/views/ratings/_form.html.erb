@@ -1,21 +1,10 @@
-<% @post.ratings.each do |comment| %>
-  <p>
-    <% unless !comment.persisted? %>
 
-      <strong>Ratings</strong>
-      <%= comment.rate %>
-      </p>
-    <% end %>
-<% end %>
-<% @post.blank_stars.times do %>
-  <span class="glyphicon glyphicon-star-empty"></span>
-<% end %>
 <%= form_with model: [ @topic, @post, rating ] do |form| %>
   <p>
-    <%= form.text_field :rate, class:"form-control" %>
+     <strong>Rating</strong>
+    <%= form.number_field :rate, min: 1, max: 5 %>
   </p>
   <p>
     <%= form.submit class:'btn btn-dark'%>
   </p>
 <% end %>
-

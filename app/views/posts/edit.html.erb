@@ -4,6 +4,10 @@
   <br class="container form-group">
   <div>
     <%= form.text_area :content, class:"form-control" %>
+    <%= Tag.all.each do |list| %>
+      <%= check_box_tag "topic" %>
+      <%= list.tag %>
+    <% end %>
   </div>
   </br>
   <div>
