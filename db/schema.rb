@@ -61,13 +61,9 @@ ActiveRecord::Schema.define(version: 2021_03_04_071121) do
   create_table "ratings", force: :cascade do |t|
     t.string "rate"
     t.integer "post_id", null: false
-    t.integer "topic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "{:null=>false, :foreign_key=>true}_id"
     t.index ["post_id"], name: "index_ratings_on_post_id"
-    t.index ["topic_id"], name: "index_ratings_on_topic_id"
-    t.index ["{:null=>false, :foreign_key=>true}_id"], name: "index_ratings_on_{:null=>false, :foreign_key=>true}_id"
   end
 
   create_table "taggings", force: :cascade do |t|

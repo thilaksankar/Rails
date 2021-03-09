@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   end
   private
   def post_params
-    params.require(:post).permit(:content, :image, :tag)
+    params.require(:post).permit(:content, :image)
   end
   def set_post
     @topic = Topic.find(params[:topic_id])

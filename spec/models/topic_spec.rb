@@ -1,12 +1,19 @@
 require 'rails_helper'
 
 RSpec.describe Topic, type: :model do
-  before(:each) do
-    @topic = Topic.create!(title: "First Project", post: "Any stuffs related to title")
+
+  describe "title validation" do
+    it {should validate_presence_of :title}
   end
-  describe "creation " do
-    it "should have a post" do
-      expect(Topic.all.count).to eq(1)
-    end
+
+  describe "post validation" do
+     it {should validate_presence_of :post}
+     it {should validate_length_of(:post).is_at_least(10)}
   end
+
+  it "for creating a topic" do
+    topic = Topic.new(title: "Sports", post: "Any thing of 10 char").save
+    expect(topic).to eq(true)
+  end
+
 end
