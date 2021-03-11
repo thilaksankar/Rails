@@ -37,6 +37,7 @@ class TopicsController < ApplicationController
     @topic.destroy
     redirect_to root_path, warning: "Topic Deleted successfully!!"
   end
+
   private
   def topic_params
     params.require(:topic).permit(:title, :post)

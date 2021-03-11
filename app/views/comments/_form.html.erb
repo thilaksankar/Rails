@@ -1,7 +1,7 @@
 <% @post.comments.each do |comment| %>
   <p>
     <% unless !comment.persisted? %>
-      <strong>Comments:</strong>
+      <strong>Comment by <%= comment.user.email %></strong>
       <%= comment.comment %>
       </p>
     <% end %>
