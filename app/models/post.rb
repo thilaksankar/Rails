@@ -7,4 +7,5 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { minimum:10 }
   has_one_attached :image
   validates :image, presence: true
+  belongs_to :user
 end

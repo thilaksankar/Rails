@@ -1,7 +1,9 @@
 </br>
 <div class="container">
-<h4><%= @post.content %></h4>
-  <%= @post.tags %>
+  <h2><%= @topic.title %></h2>
+  <h6>Post Created by <%= @post.user.email  %></h6>
+  <%#= @post.tags %>
+  <h5><%= @post.content %></h5>
   </br>
   <%= image_tag(@post.image, :alt => "rss feed", :height =>"320", :width => "320") %>
 </br>
@@ -14,10 +16,14 @@
     <% end %>
   <% end %>
   </br>
+  <% if can? :update, @post %>
 <%= link_to "Edit", edit_topic_post_path, class: "btn btn-secondary" %>
+    <% end %>
+  <% if can? :destroy, @post %>
 <%= link_to 'Delete Post', topic_post_path(@topic, @post),
             method: :delete,
             data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    <% end %>
   </br>
 </br>
   <%= render 'comments/form', comment: @post.comments.build %>

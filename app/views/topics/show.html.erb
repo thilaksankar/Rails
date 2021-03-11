@@ -1,5 +1,6 @@
 <div class= "container">
 <h1><%= @topic.title %></h1>
+  <h6>created <%= time_ago_in_words(@topic.created_at) %> ago</h6>
 <p><%= @topic.post %></p>
 &ensp; <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-secondary" %> |
 &ensp;<%= link_to "Destroy", topic_path(@topic),

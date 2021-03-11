@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:index, :show, :update, :create, :destroy]
+  before_action :set_post, only: [:index, :show, :update, :create, :destroy, :edit]
+  load_and_authorize_resource
   def new
     @posts = Post.all
   end
@@ -22,6 +23,7 @@ class PostsController < ApplicationController
   end
   def create
     @post = @topic.posts.create(post_params)
+    @post.user_id = current_user.id
     if @post.save
       redirect_to topic_path(@topic)
     else
