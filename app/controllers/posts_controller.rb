@@ -25,14 +25,15 @@ class PostsController < ApplicationController
     @post = @topic.posts.create(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to topic_path(@topic)
+      redirect_to topic_post_path(@topic, @post)
     else
       flash[:alert] = "Should have all the fields"
       redirect_to topic_path(@topic)
     end
   end
   def destroy
-    @post = @topic.posts.find(params[:id]) 
+    @post = @topic.posts.find(params[:id])
+    @post.user_id = current_user.id
     @post.destroy
     redirect_to topic_path(@topic)
   end

@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Posts", type: :request do
-  describe "post request" do
-    post = Post.create(content: "Testing purpose")
-    get topic_post_path
-    expect(response).to be_successful
-    expect(response.body).to include("Testing")
+  it "returns the status of HTTP" do
+    get post_path
+    post new_topic_post_path
+    expect(response).to render_template(:new)
   end
 end
