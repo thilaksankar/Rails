@@ -1,8 +1,8 @@
 </br>
 <div class="container">
   <h2><%= @topic.title %></h2>
-  <h6>Post Created by <%= @post.user.email  %></h6>
-  <%#= @post.tags %>
+  <h6>Post Created by <%= @post.user.email  %> <%= time_ago_in_words(@post.created_at) %> ago</h6>
+  <mark style="background-color: yellow"><%= @post.all_tags %></mark>
   <h5><%= @post.content %></h5>
   </br>
   <%= image_tag(@post.image, :alt => "rss feed", :height =>"320", :width => "320") %>
@@ -25,7 +25,7 @@
             data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
     <% end %>
   </br>
-</br>
+  </br>
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
 </div>
