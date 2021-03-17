@@ -1,7 +1,7 @@
 <% @post.comments.each do |comment| %>
   <p>
     <% unless !comment.persisted? %>
-      <strong>Comments:</strong>
+      <strong>Comment by <%= comment.user.email %></strong>
       <%= comment.comment %>
       </p>
     <% end %>
@@ -12,6 +12,6 @@
     <%= form.text_area :comment, class:"form-control" %>
   </p>
   <p>
-    <%= form.submit class:'btn btn-dark'%>
+    <%= form.submit "Add Comment", class:'btn btn-dark'%>
   </p>
 <% end %>

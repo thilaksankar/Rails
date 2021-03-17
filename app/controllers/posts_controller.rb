@@ -1,17 +1,16 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:index, :show, :update, :create, :destroy, :edit]
+  load_and_authorize_resource
   def new
     @posts = Post.all
   end
   def index
-    @topic = Topic.find(params[:topic_id])
     @posts = @topic.posts
   end
   def show
-    @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:id])
   end
   def update
-    @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:id])
     if @post.update(post_params)
       redirect_to @topic
@@ -20,27 +19,29 @@ class PostsController < ApplicationController
     end
   end
   def edit
-    @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:id])
   end
   def create
-    @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.create(post_params)
+    @post.user_id = current_user.id
     if @post.save
-      redirect_to topic_path(@topic)
+      redirect_to topic_post_path(@topic, @post)
     else
-      flash[:notice] = "Must have atleast 10 characters"
+      flash[:alert] = "Should have all the fields"
       redirect_to topic_path(@topic)
     end
   end
   def destroy
-    @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:id])
+    @post.user_id = current_user.id
     @post.destroy
     redirect_to topic_path(@topic)
   end
   private
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :image, :all_tags)
+  end
+  def set_post
+    @topic = Topic.find(params[:topic_id])
   end
 end

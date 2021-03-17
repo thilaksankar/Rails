@@ -1,15 +1,31 @@
 </br>
 <div class="container">
-<h3><%= @post.content %></h3>
-
+  <h2><%= @topic.title %></h2>
+  <h6>Post Created by <%= @post.user.email  %> <%= time_ago_in_words(@post.created_at) %> ago</h6>
+  <mark style="background-color: yellow"><%= @post.all_tags %></mark>
+  <h5><%= @post.content %></h5>
   </br>
+  <%= image_tag(@post.image, :alt => "rss feed", :height =>"320", :width => "320") %>
+</br>
+  <% @post.ratings.each do |comment| %>
+    <p>
+      <% unless !comment.persisted? %>
+        <strong>Ratings</strong>
+        <%= comment.rate %>
+        </p>
+    <% end %>
+  <% end %>
+  </br>
+  <% if can? :update, @post %>
 <%= link_to "Edit", edit_topic_post_path, class: "btn btn-secondary" %>
+    <% end %>
+  <% if can? :destroy, @post %>
 <%= link_to 'Delete Post', topic_post_path(@topic, @post),
             method: :delete,
             data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    <% end %>
   </br>
-</br>
+  </br>
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
 </div>
-
