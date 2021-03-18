@@ -6,9 +6,11 @@ class PostsController < ApplicationController
   end
   def index
     @posts = @topic.posts
+    @readpostids = current_user.read_post_ids
   end
   def show
     @post = @topic.posts.find(params[:id])
+    @readpostids = current_user.read_post_ids
   end
   def update
     @post = @topic.posts.find(params[:id])
@@ -36,6 +38,18 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     @post.destroy
     redirect_to topic_path(@topic)
+  end
+  def mark_post_read
+    set_post
+    begin
+      @post.user_ids = @post.user_ids.append(current_user.id)
+      @message = 'Post Marked Read'
+    rescue => error
+      @message = error.message
+    end
+    respond_to do |f|
+      f.json { render json: @message, status: :ok }
+    end
   end
   private
   def post_params

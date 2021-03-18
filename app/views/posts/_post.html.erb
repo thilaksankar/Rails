@@ -2,6 +2,21 @@
   <strong>Post</strong>
   <%= post.content %>
 </p>
+
 <p>
   <%= link_to 'Read the Post', [post.topic, post], class: "btn btn-primary" %>
 </p>
+<!--<script type= "text/javascript">-->
+<!--  $(document).ready(function () {-->
+<!--      if(!(<%#= current_user.read_post_ids.include? @post.id %>)) {-->
+<!--          $ajax({-->
+<!--              url: "/<%#= @topic.id%>/post/<%#= @post.id %>/mark_read",-->
+<!--              type: "POST",-->
+<!--              date: {},-->
+<!--              complete: function (resp) {-->
+
+<!--              }-->
+<!--          });-->
+<!--      }-->
+<!--  });-->
+<!--</script>-->

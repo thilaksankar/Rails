@@ -29,3 +29,17 @@
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
 </div>
+<script type= "text/javascript">
+    $(document).ready(function () {
+        if(!(<%= current_user.read_post_ids.include? @post.id %>)) {
+            $ajax({
+                url: "/<%= @topic.id%>/post/<%= @post.id %>/mark_read",
+                type: "POST",
+                date: {},
+                complete: function (resp) {
+
+                }
+            });
+        }
+    });
+</script>

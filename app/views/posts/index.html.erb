@@ -1,6 +1,11 @@
 <p class="display-4">All the Posts Are Here!!!</p>
 <% @posts.each  do |article| %>
     <li class="list-group-item">
-    <%= link_to article.content %>
+    <%= link_to article.content, topic_post_path(@topic, @posts) %>
   </li>
+  <% if @readpostids.include? article.id %>
+    read
+  <% else %>
+    not read
+  <% end %>
 <% end %>

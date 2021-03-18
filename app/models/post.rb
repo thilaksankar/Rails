@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   has_one_attached :image
   validates :image, presence: true
   belongs_to :user
+  has_and_belongs_to_many :users, join_table: 'table_posts_users_read_statuses'
   def all_tags=(names)
     self.tags = names.split(',').map do |name|
       Tag.where(tag: name).first_or_create!
