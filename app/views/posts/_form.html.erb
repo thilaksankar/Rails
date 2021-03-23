@@ -7,13 +7,10 @@
     <%= form.file_field :image %>
     </br>
     </br>
-    <%= form.label :tags %>
-    <%= form.text_field :all_tags %>
-    <%# Tag.all.each do |list| %>
-    <%#= check_box_tag "post[tag_ids][]", tag.id %>
-      <%#= list.tag %>
-    <%# end %>
-    <%#= form.check_box :tag %>
+    <% Tag.all.each do |list| %>
+    <%= check_box_tag "post[tag_ids][]", tag.id %>
+      <%= list.tag %>
+    <% end %>
   </div>
   </br>
   <div>

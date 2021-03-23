@@ -58,7 +58,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content, :image, :all_tags)
+    params.require(:post).permit(:content, :image, tags_attributes: [:tags, :tag_ids])
   end
   def set_post
     @topic = Topic.find(params[:topic_id])

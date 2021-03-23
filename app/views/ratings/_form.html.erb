@@ -2,7 +2,11 @@
 <%= form_with model: [ @topic, @post, rating ] do |form| %>
   <p>
      <strong>Rating</strong>
-    <%= form.number_field :rate, min: 1, max: 5 %>
+    <%= form.radio_button :rate, '1' %> 1 &emsp;
+    <%= form.radio_button :rate, '2' %> 2 &emsp;
+    <%= form.radio_button :rate, '3' %> 3 &emsp;
+    <%= form.radio_button :rate, '4' %> 4 &emsp;
+    <%= form.radio_button :rate, '5' %> 5 &emsp;
   </p>
   <p>
     <%= form.submit "Add Rating", class:'btn btn-dark'%>

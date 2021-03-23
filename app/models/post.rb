@@ -9,13 +9,9 @@ class Post < ApplicationRecord
   validates :image, presence: true
   belongs_to :user
   has_and_belongs_to_many :users, join_table: 'table_posts_users_read_statuses'
-  def all_tags=(names)
-    self.tags = names.split(',').map do |name|
-      Tag.where(tag: name).first_or_create!
-    end
-  end
-  def all_tags
-    tags.map(&:tag).join(", ")
-  end
-
+  accepts_nested_attributes_for :tags
+  # def tags_for_form
+  #   collection = tags.where(post_id: id)
+  #   collection.any? ? collection : tags.build
+  # end
 end

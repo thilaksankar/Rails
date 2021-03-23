@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "Topics", type: :request do
   before do
-    post '/users/sign_in'
     @user = User.create(email: "example@yahoo.com", password: "abcdef")
+    @topic = Topic.create(title: "First Project", post: "Any stuffs related to title")
   end
   describe "creating a user to access topic" do
    it "creates a user and sign in" do
@@ -12,11 +12,13 @@ RSpec.describe "Topics", type: :request do
     end
     it "create a user" do
      post "/users", :params => {:email => "example@yahoo.com", :password =>"abcdef"}
+     # count should be incremented in user table
        expect(response).to have_http_status(:ok)
     end
    it "should create a post" do
-     post "/topics", :params => {:title => "Any content to be added", :post => "Any content to be added"}
-     get "/topics/show"
+     sign_in @user
+     post "/topics", :params => { :topic => {:title => "Any content to be added", :post => "Any content to be added", :user_id => @user.id}}
+     get "/topics/:id", :params => { :topic_id => @topic.id}
      expect(response).to render_template(:show)
    end
    describe "should show all the topics" do
