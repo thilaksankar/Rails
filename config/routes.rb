@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'topics#index'
-  get 'posts/index'
+  get '/posts/index'
+  get '/posts', to: 'posts#show_all'
   resources :topics do
     resources :posts do
       resources :comments

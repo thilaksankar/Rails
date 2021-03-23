@@ -17,4 +17,5 @@ class Post < ApplicationRecord
   def all_tags
     tags.map(&:tag).join(", ")
   end
+
 end

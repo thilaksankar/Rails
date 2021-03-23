@@ -15,10 +15,13 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new(topic_params)
-    if @topic.save
-      redirect_to @topic, success: "Topics created Succesfully"
-    else
-      render :new
+    respond_to do |format|
+     if @topic.save
+       format.html { redirect_to @topic, success: "Topics created Succesfully" }
+       format.js
+     else
+       format.html { render :new }
+     end
     end
   end
 

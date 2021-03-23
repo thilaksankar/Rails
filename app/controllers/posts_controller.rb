@@ -51,6 +51,11 @@ class PostsController < ApplicationController
       f.json { render json: @message, status: :ok }
     end
   end
+
+  def show_all
+    @posts = Post.all
+  end
+
   private
   def post_params
     params.require(:post).permit(:content, :image, :all_tags)

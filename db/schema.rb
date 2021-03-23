@@ -72,22 +72,9 @@ ActiveRecord::Schema.define(version: 2021_03_17_081244) do
   create_table "ratings", force: :cascade do |t|
     t.string "rate"
     t.integer "post_id", null: false
-    t.integer "topic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "{:null=>false, :foreign_key=>true}_id"
     t.index ["post_id"], name: "index_ratings_on_post_id"
-    t.index ["topic_id"], name: "index_ratings_on_topic_id"
-    t.index ["{:null=>false, :foreign_key=>true}_id"], name: "index_ratings_on_{:null=>false, :foreign_key=>true}_id"
-  end
-
-  create_table "table_posts_users_read_statuses", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_table_posts_users_read_statuses_on_post_id"
-    t.index ["user_id"], name: "index_table_posts_users_read_statuses_on_user_id"
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -133,8 +120,6 @@ ActiveRecord::Schema.define(version: 2021_03_17_081244) do
   add_foreign_key "posts", "topics"
   add_foreign_key "posts", "users"
   add_foreign_key "ratings", "posts"
-  add_foreign_key "table_posts_users_read_statuses", "posts"
-  add_foreign_key "table_posts_users_read_statuses", "users"
   add_foreign_key "taggings", "posts"
   add_foreign_key "taggings", "tags"
 end
