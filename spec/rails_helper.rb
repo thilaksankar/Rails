@@ -33,7 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 Capybara.server_host = "localhost"
 RSpec.configure do |config|
-  config.before(:each) do
+  config.before(type: :request) do
     host! "localhost:3000"
   end
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

@@ -12,7 +12,7 @@ RSpec.describe "Posts", type: :request do
     expect(response).to render_template(:new)
   end
   it "should render show" do
-    get "/topics/:topic_id/posts/:id", :params => { :post => {:content => "Post created to the relevent topic", :topic_id => @topic.id} }
+    get :show, :params => { :post => {:content => "Post created to the relevent topic", :topic_id => @topic.id} }
     expect(response).to redirect_to(assigns(:post))
     follow_redirect!
     expect(response).to_not render_template(:show)

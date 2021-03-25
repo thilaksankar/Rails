@@ -4,18 +4,13 @@
   <h6>Post Created by <%= @post.user.email  %> <%= time_ago_in_words(@post.created_at) %> ago</h6>
   <h6>Average Rating by users <%= @post.ratings.average(:rate) %></h6>
   <h5><%= @post.content %></h5>
-  <%= @post.tags.inspect %>
+  <% @post.tags.each do |tag| %>
+    <%= tag.tag %>
+    <% end %>
   </br>
   <%= image_tag(@post.image, :alt => "rss feed", :height =>"320", :width => "320") %>
 </br>
-  <% @post.ratings.each do |comment| %>
-    <p>
-      <% unless !comment.persisted? %>
-        <strong>Ratings</strong>
-        <%= comment.rate %>
-        </p>
-    <% end %>
-  <% end %>
+
   </br>
   <% if can? :update, @post %>
 <%= link_to "Edit", edit_topic_post_path, class: "btn btn-secondary" %>
@@ -27,6 +22,15 @@
     <% end %>
   </br>
   </br>
+  <% @post.ratings.each do |comment| %>
+    <p>
+      <% unless !comment.persisted? %>
+        <strong>Ratings</strong>
+        <%= comment.rate %>
+        </p>
+      <% end %>
+  <% end %>
+
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
 </div>

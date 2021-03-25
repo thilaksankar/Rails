@@ -43,7 +43,7 @@ class TopicsController < ApplicationController
 
   private
   def topic_params
-    params.require(:topic).permit(:title, :post)
+    params.require(:topic).permit(:title, :post, :tag)
   end
 
   def set_topic

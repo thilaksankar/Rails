@@ -3,12 +3,13 @@ class RatingsController < ApplicationController
     @rating = Rating.new
   end
   def show
-    @topic = Topic.find(params[:Topic_id])
+    @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
     @rating = @post.ratings.find(params[:id])
   end
   def index
-    @topic = Topic.find(params[:Topic_id])
+    p params
+    @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.find(params[:post_id])
     @ratings = @post.ratings.find(params[:id])
   end

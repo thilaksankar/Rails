@@ -24,7 +24,9 @@ class PostsController < ApplicationController
     @post = @topic.posts.find(params[:id])
   end
   def create
-    @post = @topic.posts.create(post_params)
+    p post_params
+    p "!!!@"
+    @post = @topic.posts.new(post_params)
     @post.user_id = current_user.id
     if @post.save
       redirect_to topic_post_path(@topic, @post)
@@ -58,7 +60,7 @@ class PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:content, :image, tags_attributes: [:tags, :tag_ids])
+    params.require(:post).permit(:content, :image, tag_ids:[], tags_attributes:  [:tag])
   end
   def set_post
     @topic = Topic.find(params[:topic_id])

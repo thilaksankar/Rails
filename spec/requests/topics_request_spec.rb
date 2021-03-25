@@ -3,7 +3,6 @@ require 'rails_helper'
 RSpec.describe "Topics", type: :request do
   before do
     @user = User.create(email: "example@yahoo.com", password: "abcdef")
-    @topic = Topic.create(title: "First Project", post: "Any stuffs related to title")
   end
   describe "creating a user to access topic" do
    it "creates a user and sign in" do
@@ -18,9 +17,12 @@ RSpec.describe "Topics", type: :request do
    it "should create a post" do
      sign_in @user
      post "/topics", :params => { :topic => {:title => "Any content to be added", :post => "Any content to be added", :user_id => @user.id}}
-     get "/topics/:id", :params => { :topic_id => @topic.id}
+     # get "/topics/:id", :params => { :topic_id => @topic.id}
+     # expect(response).to render_template(:show)
+     get "/topics/:id", :params=> @topic = Topic.find(params[:id])
      expect(response).to render_template(:show)
    end
+   it "should delete"
    describe "should show all the topics" do
      it "should create a user " do
        get "/users/sign_in"

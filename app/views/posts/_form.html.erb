@@ -1,4 +1,4 @@
-<%= form_with model: [ @topic, @topic.posts.build ] do |form| %>
+<%= form_with model: [ @topic, @topic.posts.build ], remote: true do |form| %>
   <br class="container form-group">
   <div>
     <%= form.text_area :content, class:"form-control" %>
@@ -7,15 +7,26 @@
     <%= form.file_field :image %>
     </br>
     </br>
-    <% Tag.all.each do |list| %>
-    <%= check_box_tag "post[tag_ids][]", tag.id %>
-      <%= list.tag %>
+
+    <%= form.label :Select_Tag %>
+    <%= form.select(:tag_ids, Tag.all.collect {|t| [t.tag, t.id] }, { :prompt => "Please select"},
+                 { :multiple => true, :size => 5 }) %>
+    </br>
+    </br>
+    <%= form.fields_for :tags, form.object.tags.build do |f| %>
+      <%= f.label :New_tag? %>
+      <%= f.text_field :tag, class:"form-control" %>
     <% end %>
+    <%# Tag.all.each do |list| %>
+    <%#= check_box_tag "post[tag_ids][]", tag.id %>
+      <%#= list.tag %>
+
   </div>
   </br>
   <div>
     <%= form.submit class:'btn btn-dark'%>
 <% end %>
+
 </div>
 
 
