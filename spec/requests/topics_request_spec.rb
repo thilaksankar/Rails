@@ -3,42 +3,39 @@ require 'rails_helper'
 RSpec.describe "Topics", type: :request do
   before do
     @user = User.create(email: "example@yahoo.com", password: "abcdef")
+    @topic = Topic.create(title: "Sports", post: "posts related to topics")
   end
-  describe "creating a user to access topic" do
-   it "creates a user and sign in" do
-    get "/users/sign_up"
-     expect(response).to render_template(:new)
-    end
-    it "create a user" do
-     post "/users", :params => {:email => "example@yahoo.com", :password =>"abcdef"}
-     # count should be incremented in user table
-       expect(response).to have_http_status(:ok)
-    end
-   it "should create a post" do
+  describe "creating a topic" do
+   it "rendering new page" do
      sign_in @user
-     post "/topics", :params => { :topic => {:title => "Any content to be added", :post => "Any content to be added", :user_id => @user.id}}
-     # get "/topics/:id", :params => { :topic_id => @topic.id}
-     # expect(response).to render_template(:show)
-     get "/topics/:id", :params=> @topic = Topic.find(params[:id])
+    get "/topics/new"
+     expect(response).to render_template(:new)
+   end
+   it "should create a topic" do
+     sign_in @user
+     post "/topics", :params => {:topic => {:title => "Technology", :post => "any content to the post"}}
+     expect(response).to redirect_to(assigns(:topic))
+     follow_redirect!
      expect(response).to render_template(:show)
+     expect(response.body).to include("Topics created Succesfully")
    end
-   it "should delete"
-   describe "should show all the topics" do
-     it "should create a user " do
-       get "/users/sign_in"
-       expect(response).to render_template(:new)
-       post "/users/sign_in", :params => {:email => "example@yahoo.com", :password =>"abcdef"}
-       expect(response).to have_http_status(:ok)
-     end
-   end
-  #   it "creates a topic and redirects to topic show" do
-  #   get '/topics/new'
-  #   expect(response).to render_template(:new)
+  end
+  describe "it should edit and delete a post" do
+    it "should edit a post" do
+      sign_in @user
+      @topic.reload
+      get "/topics/:id", :params => {:topic => {:topic_id => @topic.id}}
+      expect(response).to render_template(:edit)
+    end
+  end
+end
+
+
+# it "creates a topic and redirects to topic show" do
+  #  get '/topics/new'
+  #  expect(response).to render_template(:new)
   # end
     #
     # post "/topics", :params => {:title => "Any content to be added", :post => "Any content to be added"}
     # expect(response).to redirect_to(assigns(:topic))
     # follow_redirect!
-  end
-end
-

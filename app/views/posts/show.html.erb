@@ -3,12 +3,16 @@
   <h2><%= @topic.title %></h2>
   <h6>Post Created by <%= @post.user.email  %> <%= time_ago_in_words(@post.created_at) %> ago</h6>
   <h6>Average Rating by users <%= @post.ratings.average(:rate) %></h6>
-  <h5><%= @post.content %></h5>
+    <h6 target="_blank">
   <% @post.tags.each do |tag| %>
     <%= tag.tag %>
     <% end %>
+    </h6>
+  <h5><%= @post.content %></h5>
   </br>
+  <% if @post.image.present? %>
   <%= image_tag(@post.image, :alt => "rss feed", :height =>"320", :width => "320") %>
+    <% end %>
 </br>
 
   </br>
@@ -34,17 +38,23 @@
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
 </div>
-<script type= "text/javascript">
-    $(document).ready(function () {
-        if(!(<%= current_user.read_post_ids.include? @post.id %>)) {
-            $ajax({
-                url: "/<%= @topic.id%>/post/<%= @post.id %>/mark_read",
-                type: "POST",
-                date: {},
-                complete: function (resp) {
-
-                }
-            });
-        }
-    });
+<!--<script type= "text/javascript">-->
+<!--    $(document).ready(function () {-->
+<!--        if(!(<%#= current_user.read_post_ids.include? @post.id %>)) {-->
+<!--            $ajax({-->
+<!--                url: "/<%= @topic.id%>/post/<%= @post.id %>/mark_post_read",-->
+<!--                type: "POST",-->
+<!--                date: {},-->
+<!--                complete: function (resp) {-->
+<!--                }-->
+<!--            });-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
+<script>
+  $(document).ready(function(){
+      var back = ["green","blue","red"];
+      var rand = back[Math.floor(Math.random() * back.length)];
+      $("h6[target='_blank']").css('color', rand);
+  });
 </script>

@@ -1,6 +1,7 @@
 <ul>
   <% if user_signed_in? %>
     <p class="display-4">Topic Are Here!!!</p>
+
   <% @topics.each do |article| %>
     <li class="list-group-item">
       <%= link_to article.title, article %>
@@ -15,6 +16,11 @@
   </li>
   <% end %>
 <br>
+  <script>
+      $(document).ready(function (){
+          $('p').css('color', 'default');
+      })
+  </script>
   <%#= javascript_pack_tag 'intro' %>
   <%= will_paginate @topics %>
 </ul>

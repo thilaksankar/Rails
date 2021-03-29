@@ -1,4 +1,4 @@
-<div class= "container">
+<div class= "container", id="topic_show">
 <h1><%= @topic.title %></h1>
   <h6>created <%= time_ago_in_words(@topic.created_at) %> ago</h6>
 <p><%= @topic.post %></p>
@@ -13,6 +13,6 @@
 <%= render 'posts/form' %>
   </br>
 
-<%= link_to "Home", topics_path, class:"btn btn-info", remote: true%>
+<%= link_to "Home", topics_path, class:"btn btn-info"%>
 </div>
 

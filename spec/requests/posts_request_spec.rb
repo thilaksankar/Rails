@@ -9,10 +9,10 @@ RSpec.describe "Posts", type: :request do
   it "redirects to new" do
    sign_in  @user
    get "/topics/:topic_id/posts/new"
-    expect(response).to render_template(:new)
+   expect(response).to render_template(:new)
   end
   it "should render show" do
-    get :show, :params => { :post => {:content => "Post created to the relevent topic", :topic_id => @topic.id} }
+    post "/topics/:topic_id/posts", :params => { :post => {:content => "Post created to the relevent topic"} }
     expect(response).to redirect_to(assigns(:post))
     follow_redirect!
     expect(response).to_not render_template(:show)
