@@ -4,8 +4,11 @@
 
   <% @topics.each do |article| %>
     <li class="list-group-item">
-      <%= link_to article.title, article %>
+          <h6><%= article.title%></h6>
       <%= article.post %>
+      <%= link_to "Show" , topic_posts_path(article), class: "btn btn-primary"%>
+      <%= link_to "Edit", topic_path(article), class: "btn btn-secondary" %>
+
       <% end %>
     </li>
   <% else %>

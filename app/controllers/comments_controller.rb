@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def show
     @comment = @post.comments.find(params[:id])
   end
-  def indexr
+  def index
     @comments = @post.comments.find(params[:id])
   end
   def create
@@ -20,6 +20,21 @@ class CommentsController < ApplicationController
       flash[:notice] = "Comments should not be empty!"
       redirect_to topic_post_path(@topic, @post)
     end
+  end
+  def update
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to topic_post_path(@topic, @post)
+    else
+      render :edit
+    end
+  end
+  def edit
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
   end
   def destroy
     @comment = @post.comments.find(params[:id])

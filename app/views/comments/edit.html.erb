@@ -1,0 +1,17 @@
+<div class="container">
+  <% @post.comments.each do |comment| %>
+    <p>
+      <% unless !comment.persisted? %>
+        <strong>Comment by <%= comment.user.email %></strong>
+        <%= comment.comment %>
+      <% end %>
+  <% end %>
+<%= form_with model: [ @topic, @post, @comment ] do |form| %>
+  <p>
+    <%= form.text_area :comment, class:"form-control" %>
+  </p>
+  <p>
+    <%= form.submit "Update Comment", class:'btn btn-dark'%>
+  </p>
+<% end %>
+</div>

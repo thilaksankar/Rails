@@ -4,4 +4,5 @@ class Topic < ApplicationRecord
   has_many :ratings, dependent: :destroy
   validates :title, presence: true
   validates :post, presence: true, length: { minimum: 10 }
+  paginates_per 10
 end

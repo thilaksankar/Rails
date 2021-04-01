@@ -12,10 +12,9 @@
   </br>
   <% if @post.image.present? %>
   <%= image_tag(@post.image, :alt => "rss feed", :height =>"320", :width => "320") %>
+    </br>
+    </br>
     <% end %>
-</br>
-
-  </br>
   <% if can? :update, @post %>
 <%= link_to "Edit", edit_topic_post_path, class: "btn btn-secondary" %>
     <% end %>
@@ -37,24 +36,22 @@
 
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
+  <%= link_to "Home", topics_path, class:"btn btn-info" %>
 </div>
-<!--<script type= "text/javascript">-->
-<!--    $(document).ready(function () {-->
-<!--        if(!(<%#= current_user.read_post_ids.include? @post.id %>)) {-->
-<!--            $ajax({-->
-<!--                url: "/<%= @topic.id%>/post/<%= @post.id %>/mark_post_read",-->
-<!--                type: "POST",-->
-<!--                date: {},-->
-<!--                complete: function (resp) {-->
-<!--                }-->
-<!--            });-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
-<script>
-  $(document).ready(function(){
-      var back = ["green","blue","red"];
-      var rand = back[Math.floor(Math.random() * back.length)];
-      $("h6[target='_blank']").css('color', rand);
-  });
+
+<script type= "text/javascript">
+    $(document).ready(function () {
+        if(!(<%= current_user.read_post_ids.include? @post.id %>)) {
+            $ajax({
+                url: "/<%= @topic.id%>/post/<%= @post.id %>/mark_post_read",
+                type: "POST",
+                date: {},
+                complete: function (resp) {
+                }
+            })
+        }
+            var back = ["green","blue","red"];
+            var rand = back[Math.floor(Math.random() * back.length)];
+            $("h6[target='_blank']").css('color', rand);
+    });
 </script>

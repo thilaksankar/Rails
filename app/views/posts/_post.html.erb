@@ -1,6 +1,8 @@
 <p>
-  <strong>Post</strong>
   <%= post.content %>
+  (<%= @topic.title %>)
+</br>
+  <h6>Rated <%= post.ratings.average(:rate) %></h6>
 </p>
 
 <p>

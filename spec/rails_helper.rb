@@ -36,6 +36,8 @@ RSpec.configure do |config|
   config.before(type: :request) do
     host! "localhost:3000"
   end
+  config.include Rails.application.routes.url_helpers
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include Devise::Test::IntegrationHelpers

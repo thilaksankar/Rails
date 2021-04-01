@@ -6,9 +6,9 @@ RSpec.describe "Topics", type: :request do
     @topic = Topic.create(title: "Sports", post: "posts related to topics")
   end
   describe "creating a topic" do
-   it "rendering new page" do
+   it "rendering new page", void: true do
      sign_in @user
-    get "/topics/new"
+     get "/topics/new"
      expect(response).to render_template(:new)
    end
    it "should create a topic" do
@@ -23,8 +23,7 @@ RSpec.describe "Topics", type: :request do
   describe "it should edit and delete a post" do
     it "should edit a post" do
       sign_in @user
-      @topic.reload
-      get "/topics/:id", :params => {:topic => {:topic_id => @topic.id}}
+      get "/topics/#{@topic.id}/edit", :params => {:topic => {:title => "Technology", :post => "any content to the post"}}
       expect(response).to render_template(:edit)
     end
   end

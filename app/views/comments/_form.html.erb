@@ -3,7 +3,10 @@
     <% unless !comment.persisted? %>
       <strong>Comment by <%= comment.user.email %></strong>
       <%= comment.comment %>
+      <% if can? :manage, comment %>
+        <%= link_to "Edit", edit_topic_post_comment_path(topic_id: @topic, post_id: @post, id: comment ), class: "btn btn-secondary" %>
       </p>
+        <% end %>
     <% end %>
 <% end %>
 <h3>Add a comment:</h3>

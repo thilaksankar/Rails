@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
   def index
-    @posts = @topic.posts
+    @posts = @topic.posts.paginate(page: params[:page], per_page: 3)
     @readpostids = current_user.read_post_ids
   end
   def show
@@ -24,8 +24,6 @@ class PostsController < ApplicationController
     @post = @topic.posts.find(params[:id])
   end
   def create
-    p post_params
-    p "!!!@"
     @post = @topic.posts.new(post_params)
     @post.user_id = current_user.id
     if @post.save
@@ -44,7 +42,8 @@ class PostsController < ApplicationController
   def mark_post_read
     set_post
     begin
-      @post.user_ids = @post.user_ids.append(current_user.id)
+      @post.users.create(users_id: current_user.id)
+      # @post.user_ids = @post.user_ids.append(current_user.id)
       @message = 'Post Marked Read'
     rescue => error
       @message = error.message
@@ -55,7 +54,7 @@ class PostsController < ApplicationController
   end
 
   def show_all
-    @posts = Post.all
+    @posts = Post.all.paginate(page: params[:page], per_page: 5)
   end
 
   private

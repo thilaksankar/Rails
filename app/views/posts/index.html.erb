@@ -1,11 +1,30 @@
-<p class="display-4">All the Posts Are Here!!!</p>
-<% @posts.each  do |article| %>
-    <li class="list-group-item">
-    <%= link_to article.content, topic_post_path(@topic, @posts) %>
-  </li>
-  <% if @readpostids.include? article.id %>
-    read
-  <% else %>
-    not read
-  <% end %>
-<% end %>
+<div class= "container">
+  <p class="display-4">All the Posts Are Here!!!</p>
+
+  <strong><%=  render @topic.posts %></strong>
+  <%= will_paginate @posts %>
+
+  <h2>Add a Post</h2>
+  <%= render 'posts/form' %>
+  </br>
+
+  <%= link_to "Home", topics_path, class:"btn btn-info"%>
+
+</div>
+
+
+
+
+
+
+
+<%# @posts.each  do |post| %>
+<!--    <li class="list-group-item">-->
+    <%#= link_to post.content, topic_post_path(@topic, :id => post.id) %>
+<!--  </li>-->
+  <%# if @readpostids.include? post.id %>
+<!--    read-->
+  <%# else %>
+<!--    not read-->
+  <%# end %>
+<%# end %>

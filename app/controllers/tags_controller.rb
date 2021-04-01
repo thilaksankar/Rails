@@ -15,6 +15,7 @@ class TagsController < ApplicationController
       redirect_to topics_path
     else
       render :new
+
     end
   end
   def update

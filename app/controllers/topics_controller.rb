@@ -34,7 +34,6 @@ class TopicsController < ApplicationController
   end
 
   def edit
-    p topic_params
   end
 
   def destroy

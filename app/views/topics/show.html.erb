@@ -5,13 +5,8 @@
 &ensp; <%= link_to "Edit", edit_topic_path(@topic), class: "btn btn-secondary" %> |
 &ensp;<%= link_to "Destroy", topic_path(@topic),
                   method: :delete,
-                  data: { confirm: "Are you sure?" },:remote => true, class: "btn btn-danger" %>
-</br>
-</br>
-        <strong><%=  render @topic.posts %></strong>
-<h2>Add a Post</h2>
-<%= render 'posts/form' %>
-  </br>
+                  data: { confirm: "Are you sure?" },:remote => true, class: "btn btn-danger" %> |
+
 
 <%= link_to "Home", topics_path, class:"btn btn-info"%>
 </div>
