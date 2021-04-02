@@ -1,6 +1,5 @@
 <%= form_with model: [ @topic, @topic.posts.build ], remote: true do |form| %>
-  <br class="container form-group">
-  <div>
+  <div class="container form-group">
     <%= form.text_area :content, class:"form-control" %>
     </br>
     <%= form.label :Add_Photo %>
@@ -13,19 +12,21 @@
                  { :multiple => true, :size => 5 }) %>
     </br>
     </br>
-    <%= form.fields_for :tags, form.object.tags.build do |f| %>
-      <%= f.label :New_tag? %>
-      <%= f.text_field :tag, class:"form-control" %>
-    <% end %>
+    <%#= form.fields_for :tags, form.object.tags.build do |f| %>
+      <%#= f.label :New_tag? %>
+      <%#= f.text_field :tag, class:"form-control" %>
+    <%# end %>
     <%# Tag.all.each do |list| %>
     <%#= check_box_tag "post[tag_ids][]", tag.id %>
       <%#= form.tag_ids %>
   </div>
-  </br>
   <div>
+    <%= link_to "Create new Tag", new_tag_path, class:"btn btn-light" %>
+    </br>
+    </br>
     <%= form.submit class:'btn btn-dark'%>
+    <%#= link_to "Create new Tag", new_tag_path, class:"btn btn-light" %>
 <% end %>
-
 </div>
 
 

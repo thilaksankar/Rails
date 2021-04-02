@@ -15,7 +15,7 @@ class PostsController < ApplicationController
   def update
     @post = @topic.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to @topic
+      redirect_to topic_post_path(@topic, @post)
     else
       render :edit
     end
@@ -30,14 +30,14 @@ class PostsController < ApplicationController
       redirect_to topic_post_path(@topic, @post)
     else
       flash[:alert] = "Should have all the fields"
-      redirect_to topic_path(@topic)
+      redirect_to topic_posts_path(@topic, @post)
     end
   end
   def destroy
     @post = @topic.posts.find(params[:id])
     @post.user_id = current_user.id
     @post.destroy
-    redirect_to topic_path(@topic)
+    redirect_to topic_posts_path(@topic, @post)
   end
   def mark_post_read
     set_post

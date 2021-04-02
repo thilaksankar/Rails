@@ -2,7 +2,11 @@
 <div class="container">
   <h2><%= @topic.title %></h2>
   <h6>Post Created by <%= @post.user.email  %> <%= time_ago_in_words(@post.created_at) %> ago</h6>
+  <% if @post.ratings.count.zero? %>
+    <h6>Not Rated Yet</h6>
+    <% else %>
   <h6>Average Rating by users <%= @post.ratings.average(:rate) %></h6>
+    <% end %>
     <h6 target="_blank">
   <% @post.tags.each do |tag| %>
     <%= tag.tag %>

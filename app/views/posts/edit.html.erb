@@ -1,5 +1,5 @@
 <div class="container">
-  <h3 style="font-family:verdana;">Edit Post</h3>
+  <h3 class="display-4">Edit Post</h3>
 <%= form_with model: [@topic, @post ] do |form| %>
   <br class="container form-group">
   <div>
@@ -9,8 +9,9 @@
     <%= form.file_field :image %>
   </br>
     </br>
-    <%= form.label :tags %>
-    <%= form.text_field :all_tags %>
+    <%= form.label :Select_Tag %>
+    <%= form.select(:tag_ids, Tag.all.collect {|t| [t.tag, t.id] }, { :prompt => "Please select"},
+                    { :multiple => true, :size => 5 }) %>
     <%#= Tag.all.each do |list| %>
       <%#= check_box_tag "topic" %>
       <%#= list.tag %>

@@ -2,7 +2,11 @@
   <%= post.content %>
   (<%= @topic.title %>)
 </br>
+<% if post.ratings.count.zero? %>
+  <h6>Not Rated Yet</h6>
+  <% else %>
   <h6>Rated <%= post.ratings.average(:rate) %></h6>
+  <% end %>
 </p>
 
 <p>

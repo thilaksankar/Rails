@@ -1,10 +1,13 @@
 <div class= "container">
-  <p class="display-4">All the Posts Are Here!!!</p>
-
+  <% if @posts.count.zero? %>
+    <p class="display-4">No Post To Show :(</p>
+    <% else %>
+  <p class="display-4">All the Posts Of <%= @topic.title %></p>
+  <% end %>
   <strong><%=  render @topic.posts %></strong>
   <%= will_paginate @posts %>
 
-  <h2>Add a Post</h2>
+  <h2 class="display-4">Add a Post</h2>
   <%= render 'posts/form' %>
   </br>
 
