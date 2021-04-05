@@ -5,12 +5,11 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
   def index
-    @posts = @topic.posts.paginate(page: params[:page], per_page: 3)
+    @posts = @topic.posts.paginate(page: params[:page], per_page: 4)
     @readpostids = current_user.read_post_ids
   end
   def show
     @post = @topic.posts.find(params[:id])
-    @readpostids = current_user.read_post_ids
   end
   def update
     @post = @topic.posts.find(params[:id])

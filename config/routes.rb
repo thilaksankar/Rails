@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     end
   end
   resources :tags
-  post '/:topic_id/post/:id/mark_read', to: 'posts#mark_post_read'
+  post 'topics/:topic_id/post/:id/mark_read', to: 'posts#mark_post_read'
 end

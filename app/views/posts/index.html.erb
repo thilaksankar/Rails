@@ -4,7 +4,23 @@
     <% else %>
   <p class="display-4">All the Posts Of <%= @topic.title %></p>
   <% end %>
-  <strong><%=  render @topic.posts %></strong>
+<!--  <strong><%#=  render @topic.posts %></strong>-->
+  <% @posts.each do |post| %>
+  <%= post.content %>
+  (<%= @topic.title %>)
+  </br>
+  <% if post.ratings.count.zero? %>
+    <h6>Not Rated Yet</h6>
+  <% else %>
+    <h6>Rated <%= post.ratings.average(:rate) %></h6>
+  <% end %>
+  </p>
+
+  <p>
+    <%= link_to 'Read the Post', [post.topic, post], class: "btn btn-primary" %>
+  </p>
+
+<% end  %>
   <%= will_paginate @posts %>
 
   <h2 class="display-4">Add a Post</h2>

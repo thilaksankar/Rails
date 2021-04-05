@@ -15,5 +15,4 @@ class Post < ApplicationRecord
   #   collection = tags.where(post_id: id)
   #   collection.any? ? collection : tags.build
   # end
-  paginates_per 10
 end
