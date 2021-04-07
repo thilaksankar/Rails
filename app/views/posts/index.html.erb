@@ -9,6 +9,11 @@
   <%= post.content %>
   (<%= @topic.title %>)
   </br>
+    <% if @readpostids.include? post.id %>
+     <h6 style="color:green"> read</h6>
+    <% else %>
+      <p style="color:red">not read</p>
+    <% end %>
   <% if post.ratings.count.zero? %>
     <h6>Not Rated Yet</h6>
   <% else %>
@@ -30,20 +35,3 @@
   <%= link_to "Home", topics_path, class:"btn btn-info"%>
 
 </div>
-
-
-
-
-
-
-
-<%# @posts.each  do |post| %>
-<!--    <li class="list-group-item">-->
-    <%#= link_to post.content, topic_post_path(@topic, :id => post.id) %>
-<!--  </li>-->
-  <%# if @readpostids.include? post.id %>
-<!--    read-->
-  <%# else %>
-<!--    not read-->
-  <%# end %>
-<%# end %>

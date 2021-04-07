@@ -19,7 +19,7 @@
 <!--  $(document).ready(function () {-->
 <!--      if(!(<%#= current_user.read_post_ids.include? @post.id %>)) {-->
 <!--          $ajax({-->
-<!--              url: "/<%#= @topic.id%>/post/<%#= @post.id %>/mark_read",-->
+<!--              url: "/<%= /topics/@topic.id%>/posts/<%= @post.id %>/mark_read",-->
 <!--              type: "POST",-->
 <!--              date: {},-->
 <!--              complete: function (resp) {-->

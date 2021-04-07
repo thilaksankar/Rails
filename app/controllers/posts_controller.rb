@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:index, :show, :update, :create, :destroy, :edit]
   load_and_authorize_resource
+  skip_before_action :verify_authenticity_token
   def new
     @posts = Post.all
   end
   def index
-    @posts = @topic.posts.paginate(page: params[:page], per_page: 4)
+    @posts = @topic.posts.paginate(page: params[:page], per_page: 10)
     @readpostids = current_user.read_post_ids
   end
   def show
@@ -41,8 +42,7 @@ class PostsController < ApplicationController
   def mark_post_read
     set_post
     begin
-      @post.users.create(users_id: current_user.id)
-      # @post.user_ids = @post.user_ids.append(current_user.id)
+      @post.user_ids = @post.user_ids.append(current_user.id)
       @message = 'Post Marked Read'
     rescue => error
       @message = error.message
@@ -53,6 +53,7 @@ class PostsController < ApplicationController
   end
 
   def show_all
+    @topic = Topic.all
     @posts = Post.all.paginate(page: params[:page], per_page: 5)
   end
 

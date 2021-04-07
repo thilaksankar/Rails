@@ -10,6 +10,7 @@
     <%= form.label :Select_Tag %>
     <%= form.select(:tag_ids, Tag.all.collect {|t| [t.tag, t.id] }, { :prompt => "Please select"},
                  { :multiple => true, :size => 5 }) %>
+    <%=  %>
     </br>
     </br>
     <%#= form.fields_for :tags, form.object.tags.build do |f| %>
@@ -17,8 +18,9 @@
       <%#= f.text_field :tag, class:"form-control" %>
     <%# end %>
     <%# Tag.all.each do |list| %>
-    <%#= check_box_tag "post[tag_ids][]", tag.id %>
-      <%#= form.tag_ids %>
+    <%#= check_box_tag "post[tag_ids][]", tag_ids %>
+      <%#= list.tag_ids %>
+      <%# end %>
   </div>
   <div>
     <%= link_to "Create new Tag", new_tag_path, class:"btn btn-light" %>

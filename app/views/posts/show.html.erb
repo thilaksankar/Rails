@@ -46,16 +46,13 @@
 <script type= "text/javascript">
     $(document).ready(function () {
         if(!(<%= current_user.read_post_ids.include? @post.id %>)) {
-            $ajax({
-                url: "/<%= @topic.id%>/post/<%= @post.id %>/mark_post_read",
+            $.ajax({
+                url: "/<%= @topic.id%>/post/<%= @post.id %>/mark_read",
                 type: "POST",
                 date: {},
                 complete: function (resp) {
                 }
             })
         }
-            var back = ["green","blue","red"];
-            var rand = back[Math.floor(Math.random() * back.length)];
-            $("h6[target='_blank']").css('color', rand);
     });
 </script>
