@@ -1,4 +1,5 @@
-<div class= "container">
+<div class= "container" id="new-post">
+
   <% if @posts.count.zero? %>
     <p class="display-4">No Post To Show :(</p>
     <% else %>
@@ -12,7 +13,7 @@
     <% if @readpostids.include? post.id %>
      <h6 style="color:green"> read</h6>
     <% else %>
-      <p style="color:red">not read</p>
+      <h6 style="color:red">not read</h6>
     <% end %>
   <% if post.ratings.count.zero? %>
     <h6>Not Rated Yet</h6>

@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_many :ratings, dependent: :destroy
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
-  validates :content, presence: true, length: { minimum:10 }
+  validates :content, presence: true, length: { maximum:20 }
   has_one_attached :image
   # validates :image, presence: true
   belongs_to :user

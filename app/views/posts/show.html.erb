@@ -1,5 +1,5 @@
 </br>
-<div class="container">
+<div class="container" id="new-post">
   <h2><%= @topic.title %></h2>
   <h6>Post Created by <%= @post.user.email  %> <%= time_ago_in_words(@post.created_at) %> ago</h6>
   <% if @post.ratings.count.zero? %>
@@ -7,7 +7,7 @@
     <% else %>
   <h6>Average Rating by users <%= @post.ratings.average(:rate) %></h6>
     <% end %>
-    <h6 target="_blank">
+    <h6 style="color:red">
   <% @post.tags.each do |tag| %>
     <%= tag.tag %>
     <% end %>
@@ -40,6 +40,7 @@
 
   <%= render 'comments/form', comment: @post.comments.build %>
   <%= render 'ratings/form', rating: @post.ratings.build %>
+  <%= link_to "Back", topic_posts_path(@topic), class: "btn btn-secondary" %>
   <%= link_to "Home", topics_path, class:"btn btn-info" %>
 </div>
 

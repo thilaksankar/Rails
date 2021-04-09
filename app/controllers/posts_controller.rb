@@ -26,11 +26,14 @@ class PostsController < ApplicationController
   def create
     @post = @topic.posts.new(post_params)
     @post.user_id = current_user.id
+    respond_to do |form|
     if @post.save
-      redirect_to topic_post_path(@topic, @post)
+      form.js
+      form.html { redirect_to topic_post_path(@topic, @post), success: "Post created Succesfully" }
     else
-      flash[:alert] = "Should have all the fields"
-      redirect_to topic_posts_path(@topic, @post)
+      flash[:danger] = "Should not exceed 20 characters!"
+      form.html { redirect_to topic_posts_path(@topic, @post) }
+      end
     end
   end
   def destroy

@@ -4,7 +4,9 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    # can :update, Post, user_id: user.id
     can :manage, Post, user_id: user.id
+    can :mark_post_read, Post, :all
     can :manage, Comment, user_id: user.id
     can :read, :all
     # Define abilities for the passed in user here. For example:

@@ -1,4 +1,4 @@
-<%= form_with model: [ @topic, @topic.posts.build ], remote: true do |form| %>
+<%= form_for  [ @topic, @topic.posts.build ], remote: true do |form| %>
   <div class="container form-group">
     <%= form.text_area :content, class:"form-control" %>
     </br>
@@ -26,7 +26,7 @@
     <%= link_to "Create new Tag", new_tag_path, class:"btn btn-light" %>
     </br>
     </br>
-    <%= form.submit class:'btn btn-dark'%>
+    <%= form.submit class:'btn btn-dark', remote: true %>
     <%#= link_to "Create new Tag", new_tag_path, class:"btn btn-light" %>
 <% end %>
 </div>

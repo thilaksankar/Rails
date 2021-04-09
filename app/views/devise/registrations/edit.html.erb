@@ -37,9 +37,9 @@
   </div>
 <% end %>
 
-<p class="display-4" style="color:red">Cancel my account</p>
+<p class="display-4" style="color:#ff0000">Unhappy?</p>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:'btn btn-outline-danger' %></p>
+<p> <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class:'btn btn-outline-danger' %></p>
 
 <%= link_to "Back", :back %>
 </div>
